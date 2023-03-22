@@ -1,28 +1,35 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_iterative_power.c                               :+:      :+:    :+:   */
+/*   ft_find_next_prime.c                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: wteles-d <wteles-d@student.42lisboa.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/03/21 16:53:20 by wteles-d          #+#    #+#             */
-/*   Updated: 2023/03/22 13:24:30 by wteles-d         ###   ########.fr       */
+/*   Created: 2023/03/22 18:08:03 by wteles-d          #+#    #+#             */
+/*   Updated: 2023/03/22 18:33:45 by wteles-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-int	ft_iterative_power(int nb, int power)
+int	ft_find_next_prime(int nb)
 {
 	int	i;
-	int	save;
+	int	j;
 
-	i = power;
-	save = nb;
-	if ((power == 0 && nb == 0) || power == 0)
-		return (1);
-	while (i > 1)
+	i = 2;
+	j = 2;
+	if (nb < 1)
+		return (0);
+	while (i < nb)
 	{
-		nb = nb * save;
-		i--;
+		j = 2;
+		while (j < nb)
+		{
+			if (i * j == nb)
+				nb = (ft_find_next_prime(nb + 1));
+			else
+				j++;
+		}
+		i++;
 	}
 	return (nb);
 }
@@ -31,13 +38,8 @@ int	ft_iterative_power(int nb, int power)
 
 int	main(void)
 {
-	int	n = 0;
-	int	p = 0;
-
-	printf("Number\n");
+	int	n = 2;
 	scanf("%d", &n);
-	printf("Power\n");
-	scanf("%d", &p);
-	printf("Total = %d\n", ft_iterative_power(n, p));
+	printf("Is Prime? %d\n", ft_find_next_prime(n));
 }
 */

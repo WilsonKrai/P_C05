@@ -1,43 +1,50 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_iterative_power.c                               :+:      :+:    :+:   */
+/*   ft_is_prime.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: wteles-d <wteles-d@student.42lisboa.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/03/21 16:53:20 by wteles-d          #+#    #+#             */
-/*   Updated: 2023/03/22 13:24:30 by wteles-d         ###   ########.fr       */
+/*   Created: 2023/03/22 17:09:58 by wteles-d          #+#    #+#             */
+/*   Updated: 2023/03/22 18:07:09 by wteles-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-int	ft_iterative_power(int nb, int power)
+int	ft_is_prime(int nb)
 {
 	int	i;
-	int	save;
+	int	j;
 
-	i = power;
-	save = nb;
-	if ((power == 0 && nb == 0) || power == 0)
-		return (1);
-	while (i > 1)
+	i = 2;
+	j = 2;
+	if (nb < 1)
+		return (0);
+	while (i < nb)
 	{
-		nb = nb * save;
-		i--;
+		j = 2;
+		while (j < nb)
+		{
+			if (i * j == nb)
+				return (0);
+			else
+				j++;
+		}
+		i++;
 	}
-	return (nb);
+	return (1);
 }
 /*
 #include <stdio.h>
 
 int	main(void)
 {
-	int	n = 0;
-	int	p = 0;
-
-	printf("Number\n");
-	scanf("%d", &n);
-	printf("Power\n");
-	scanf("%d", &p);
-	printf("Total = %d\n", ft_iterative_power(n, p));
+	int	n = 2;
+	
+	while (n < 200)
+	{
+		printf("Number %d ", n);
+		printf("Is Prime? %d\n", ft_is_prime(n));
+		n++;
+	}
 }
 */
