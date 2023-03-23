@@ -6,7 +6,7 @@
 /*   By: wteles-d <wteles-d@student.42lisboa.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/21 16:53:20 by wteles-d          #+#    #+#             */
-/*   Updated: 2023/03/22 13:24:30 by wteles-d         ###   ########.fr       */
+/*   Updated: 2023/03/23 13:30:50 by wteles-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,15 +16,17 @@ int	ft_iterative_power(int nb, int power)
 	int	save;
 
 	i = power;
-	save = nb;
-	if ((power == 0 && nb == 0) || power == 0)
+	save = 1;
+	if (power < 0)
+		return (0);
+	if (power == 0 && nb == 0)
 		return (1);
-	while (i > 1)
+	while (i > 0)
 	{
-		nb = nb * save;
+		save = save * nb;
 		i--;
 	}
-	return (nb);
+	return (save);
 }
 /*
 #include <stdio.h>
